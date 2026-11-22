@@ -169,6 +169,46 @@
     footer{border-top-color:#293950;color:#91A0B7}
     .footer-inner strong{color:#EAF1FB}
     ::selection{background:#225EB5;color:#fff}
+    .step-body{min-width:0}
+    .step-heading{display:flex;align-items:center;gap:12px;margin:0 0 8px}
+    .step-heading h3{margin:0}
+    .claude-mark{flex:none;width:42px;height:42px;border-radius:12px;background:#F8F5EF;display:grid;place-items:center;border:1px solid #E7E1D7;box-shadow:0 5px 15px #0003}
+    .claude-mark svg{width:25px;height:25px;display:block}
+    .step-kicker{display:block;color:#94A8C4;font-size:11px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;margin-top:2px}
+    .step-action{display:inline-flex;align-items:center;gap:8px;margin-top:12px;padding:9px 13px;border:1px solid #3B5E8E;border-radius:9px;background:#132A49;color:#DCEBFF;text-decoration:none;font-size:13px;font-weight:800;transition:.18s ease}
+    .step-action:hover{background:#1A3A64;border-color:#5487C8;transform:translateY(-1px)}
+    .step-action svg{width:17px;height:17px;flex:none}
+    .repo-link{display:inline-flex;align-items:center;gap:6px;margin-top:9px;font-size:12px;font-weight:750;color:#91BDFF;text-decoration:none}
+    .repo-link:hover{text-decoration:underline}
+    .copy-card{margin-top:15px;padding:15px;border:1px solid #34557F;border-radius:14px;background:#0A1423;box-shadow:inset 0 1px 0 #ffffff08}
+    .copy-card-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}
+    .copy-card-title{font-size:11px;font-weight:900;letter-spacing:.09em;color:#9FC5FF}
+    .copy-button{border:0;border-radius:8px;background:#2875E8;color:#fff;padding:9px 12px;font:800 12px/1.2 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;cursor:pointer;display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
+    .copy-button:hover{background:#438CFA}
+    .copy-button svg{width:15px;height:15px}
+    .copy-prompt{display:block;max-height:220px;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;margin:0;padding:12px;border-radius:9px;background:#070D17;border:1px solid #273950;color:#D6E3F4;font:12px/1.65 ui-monospace,SFMono-Regular,Consolas,monospace}
+    .copy-status{min-height:18px;margin:8px 0 0;color:#8EBBFF;font-size:11px}
+    .step-note{display:flex;gap:9px;align-items:flex-start;margin-top:12px;padding:11px 12px;border:1px solid #2B4566;background:#10213A;border-radius:10px;color:#C2D5F0;font-size:12px;line-height:1.5}
+    .step-note strong{color:#F0F6FF}
+    .academy{grid-template-columns:1fr;gap:20px;padding:clamp(23px,4vw,38px);overflow:hidden;position:relative}
+    .academy:before{content:"";position:absolute;width:340px;height:340px;right:-110px;top:-170px;border-radius:50%;background:radial-gradient(circle,#2B73DA36 0%,transparent 68%);pointer-events:none}
+    .academy-top{position:relative;max-width:760px}
+    .academy h2{font-size:clamp(29px,4vw,43px);max-width:760px}
+    .academy-intro{font-size:16px;line-height:1.65}
+    .academy-grid{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin-top:2px}
+    .academy-feature{padding:16px;border:1px solid #2B4568;border-radius:13px;background:#0C192B}
+    .academy-feature .feature-mark{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:#17345C;color:#9CC6FF;font-size:17px;font-weight:900;margin-bottom:10px}
+    .academy-feature h3{margin:0 0 5px;font-size:14px;color:#F2F6FD}
+    .academy-feature p{font-size:12px;line-height:1.55;color:#B5C6DC;margin:0}
+    .academy-call{position:relative;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:17px 18px;border:1px solid #345987;border-radius:13px;background:linear-gradient(100deg,#142D4D,#10213A)}
+    .academy-call strong{display:block;color:#F4F8FF;font-size:15px;margin-bottom:3px}
+    .academy-call span{display:block;color:#B7CAE3;font-size:12px;line-height:1.5}
+    .academy-cta-row{position:relative;display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}
+    .academy-cta-row .price{margin:0;color:#BFD5F4;font-size:12px;font-weight:700}
+    .academy .btn{min-width:225px}
+    .academy-disclaimer{font-size:11px!important;color:#91A6C2!important;margin-top:9px!important}
+    @media(max-width:760px){.academy-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:560px){.copy-card{padding:11px}.copy-card-head{align-items:flex-start;flex-direction:column}.copy-button{width:100%;justify-content:center}.copy-prompt{font-size:11px;max-height:260px}.academy-grid{grid-template-columns:1fr}.academy-call{align-items:flex-start;flex-direction:column}.academy .btn{width:100%;min-width:0}.academy-cta-row{align-items:stretch;flex-direction:column}}
     @media(max-width:850px){.ideas{grid-template-columns:repeat(3,1fr)}}
     @media(max-width:560px){.ideas{grid-template-columns:1fr 1fr}.idea-image{aspect-ratio:9/16}.idea .idea-body>p:not(.idea-meta){min-height:0}}
     @media(max-width:390px){.ideas{grid-template-columns:1fr}}
@@ -178,7 +218,7 @@
   <header class="topbar">
     <div class="wrap nav">
       <a class="logo" href="#top">NICO <span>VAREL</span></a>
-      <a class="navlink" href="#academia">Monetiza con IA →</a>
+      <a class="navlink" href="https://www.skool.com/ai-content-academy-5760" target="_blank" rel="noopener">Entrar a la academia →</a>
     </div>
   </header>
 
@@ -238,7 +278,7 @@
       </div>
       <div class="requirements">
         <article class="req"><div class="ico">💻</div><h3>Un ordenador</h3><p>Mac o Windows, conexión a internet y espacio libre para el proyecto y los archivos.</p></article>
-        <article class="req"><div class="ico">🤖</div><h3>Claude Code</h3><p>La herramienta que coordinará la Skill y el proceso de creación.</p><a class="label" href="https://claude.ai/download" target="_blank" rel="noopener">DESCARGAR CLAUDE ↗</a></article>
+        <article class="req"><div class="req-brand"><span class="claude-mark" aria-hidden="true"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="#D97757" d="M11.376 24L10.776 23.544L10.44 22.8L10.776 21.312L11.16 19.392L11.472 17.856L11.76 15.96L11.928 15.336L11.904 15.288L11.784 15.312L10.344 17.28L8.16 20.232L6.432 22.056L6.024 22.224L5.304 21.864L5.376 21.192L5.784 20.616L8.16 17.568L9.6 15.672L10.536 14.592L10.512 14.448H10.464L4.128 18.576L3 18.72L2.496 18.264L2.568 17.52L2.808 17.28L4.704 15.96L9.432 13.32L9.504 13.08L9.432 12.96H9.192L8.4 12.912L5.712 12.84L3.384 12.744L1.104 12.624L0.528 12.504L0 11.784L0.048 11.424L0.528 11.112L1.224 11.16L2.736 11.28L5.016 11.424L6.672 11.52L9.12 11.784H9.504L9.552 11.616L9.432 11.52L9.336 11.424L6.96 9.84L4.416 8.16L3.072 7.176L2.352 6.672L1.992 6.216L1.848 5.208L2.496 4.488L3.384 4.56L3.6 4.608L4.488 5.304L6.384 6.768L8.88 8.616L9.24 8.904L9.408 8.808V8.736L9.24 8.472L7.896 6.024L6.456 3.528L5.808 2.496L5.64 1.872C5.576 1.656 5.544 1.416 5.544 1.152L6.288 0.144001L6.696 0L7.704 0.144001L8.112 0.504001L8.736 1.92L9.72 4.152L11.28 7.176L11.736 8.088L11.976 8.904L12.072 9.168H12.24V9.024L12.36 7.296L12.6 5.208L12.84 2.52L12.912 1.752L13.296 0.840001L14.04 0.360001L14.616 0.624001L15.096 1.32L15.024 1.752L14.76 3.6L14.184 6.504L13.824 8.472H14.04L14.28 8.208L15.264 6.912L16.92 4.848L17.64 4.032L18.504 3.12L19.056 2.688H20.088L20.832 3.816L20.496 4.992L19.44 6.336L18.552 7.464L17.28 9.168L16.512 10.536L16.584 10.632H16.752L19.608 10.008L21.168 9.744L22.992 9.432L23.832 9.816L23.928 10.2L23.592 11.016L21.624 11.496L19.32 11.952L15.888 12.768L15.84 12.792L15.888 12.864L17.424 13.008L18.096 13.056H19.728L22.752 13.272L23.544 13.8L24 14.424L23.928 14.928L22.704 15.528L21.072 15.144L17.232 14.232L15.936 13.92H15.744V14.016L16.848 15.096L18.84 16.896L21.36 19.224L21.48 19.8L21.168 20.28L20.832 20.232L18.624 18.552L17.76 17.808L15.84 16.2H15.72V16.368L16.152 17.016L18.504 20.544L18.624 21.624L18.456 21.96L17.832 22.176L17.184 22.056L15.792 20.136L14.376 17.952L13.224 16.008L13.104 16.104L12.408 23.352L12.096 23.712L11.376 24Z"/></svg></span></div><h3>Claude Code</h3><p>La herramienta que instala y ejecuta la Skill para crear el Short.</p><a class="label" href="https://claude.ai/download" target="_blank" rel="noopener">DESCARGAR CLAUDE ↗</a></article>
         <article class="req"><div class="ico">🎁</div><h3>La Skill gratuita</h3><p>El paquete de Nico Varel con instrucciones, recursos y flujo de producción.</p><span class="label">DESCARGA EN PREPARACIÓN</span></article>
         <article class="req"><div class="ico">🎙️</div><h3>Una voz</h3><p>Tu propia narración o un servicio compatible de generación de voz. Pueden aplicarse límites o costes.</p></article>
       </div>
@@ -247,16 +287,60 @@
     <section class="wrap" id="pasos">
       <div class="section-title">
         <h2>Tu primer Short en 5 pasos</h2>
-        <p>Sigue el proceso de principio a fin. Las instrucciones definitivas de instalación se añadirán cuando la Skill esté probada.</p>
+        <p>Abre Claude Code, instala la Skill gratuita y deja que te guíe desde la idea hasta el video terminado.</p>
       </div>
       <div class="steps">
-        <article class="step" id="paso-1"><div class="stepno">1</div><div><h3>Abre Claude Code</h3><p>Crea una carpeta nueva para tu proyecto, por ejemplo <span class="code">CuriosidadesAnimadas</span>, y ábrela en Claude Code.</p><small>Descarga Claude desde su página oficial si todavía no lo tienes.</small></div></article>
-        <article class="step" id="paso-2"><div class="stepno">2</div><div><h3>Instala la Skill de Nico Varel</h3><p>Descarga el paquete gratuito y sigue las instrucciones incluidas para instalarlo en Claude Code.</p><small>El botón de descarga y la ruta exacta se publicarán aquí después de validar el instalador y probarlo en los sistemas compatibles.</small></div></article>
-        <article class="step" id="paso-3"><div class="stepno">3</div><div><h3>Elige una curiosidad</h3><p>Selecciona una de las cinco ideas preparadas o introduce una historia propia. Claude investiga los datos, prepara el guion y organiza las escenas.</p></div></article>
-        <article class="step" id="paso-4"><div class="stepno">4</div><div><h3>Añade la voz</h3><p>Graba la narración o utiliza un proveedor de voz compatible. Coloca el audio en la carpeta del proyecto siguiendo las instrucciones de la Skill.</p></div></article>
-        <article class="step" id="paso-5"><div class="stepno">5</div><div><h3>Genera y revisa tu Short</h3><p>Claude coordina personajes, escenarios, animación, cámara y subtítulos. Revisa el resultado y exporta el video vertical cuando el render esté terminado.</p></div></article>
+        <article class="step" id="paso-1">
+          <div class="stepno">1</div>
+          <div class="step-body">
+            <div class="step-heading">
+              <span class="claude-mark" aria-hidden="true"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="#D97757" d="M11.376 24L10.776 23.544L10.44 22.8L10.776 21.312L11.16 19.392L11.472 17.856L11.76 15.96L11.928 15.336L11.904 15.288L11.784 15.312L10.344 17.28L8.16 20.232L6.432 22.056L6.024 22.224L5.304 21.864L5.376 21.192L5.784 20.616L8.16 17.568L9.6 15.672L10.536 14.592L10.512 14.448H10.464L4.128 18.576L3 18.72L2.496 18.264L2.568 17.52L2.808 17.28L4.704 15.96L9.432 13.32L9.504 13.08L9.432 12.96H9.192L8.4 12.912L5.712 12.84L3.384 12.744L1.104 12.624L0.528 12.504L0 11.784L0.048 11.424L0.528 11.112L1.224 11.16L2.736 11.28L5.016 11.424L6.672 11.52L9.12 11.784H9.504L9.552 11.616L9.432 11.52L9.336 11.424L6.96 9.84L4.416 8.16L3.072 7.176L2.352 6.672L1.992 6.216L1.848 5.208L2.496 4.488L3.384 4.56L3.6 4.608L4.488 5.304L6.384 6.768L8.88 8.616L9.24 8.904L9.408 8.808V8.736L9.24 8.472L7.896 6.024L6.456 3.528L5.808 2.496L5.64 1.872C5.576 1.656 5.544 1.416 5.544 1.152L6.288 0.144001L6.696 0L7.704 0.144001L8.112 0.504001L8.736 1.92L9.72 4.152L11.28 7.176L11.736 8.088L11.976 8.904L12.072 9.168H12.24V9.024L12.36 7.296L12.6 5.208L12.84 2.52L12.912 1.752L13.296 0.840001L14.04 0.360001L14.616 0.624001L15.096 1.32L15.024 1.752L14.76 3.6L14.184 6.504L13.824 8.472H14.04L14.28 8.208L15.264 6.912L16.92 4.848L17.64 4.032L18.504 3.12L19.056 2.688H20.088L20.832 3.816L20.496 4.992L19.44 6.336L18.552 7.464L17.28 9.168L16.512 10.536L16.584 10.632H16.752L19.608 10.008L21.168 9.744L22.992 9.432L23.832 9.816L23.928 10.2L23.592 11.016L21.624 11.496L19.32 11.952L15.888 12.768L15.84 12.792L15.888 12.864L17.424 13.008L18.096 13.056H19.728L22.752 13.272L23.544 13.8L24 14.424L23.928 14.928L22.704 15.528L21.072 15.144L17.232 14.232L15.936 13.92H15.744V14.016L16.848 15.096L18.84 16.896L21.36 19.224L21.48 19.8L21.168 20.28L20.832 20.232L18.624 18.552L17.76 17.808L15.84 16.2H15.72V16.368L16.152 17.016L18.504 20.544L18.624 21.624L18.456 21.96L17.832 22.176L17.184 22.056L15.792 20.136L14.376 17.952L13.224 16.008L13.104 16.104L12.408 23.352L12.096 23.712L11.376 24Z"/></svg></span>
+              <div><h3>Abre Claude Code</h3><span class="step-kicker">Aplicación de Claude</span></div>
+            </div>
+            <p>Crea una carpeta para tu proyecto, por ejemplo <span class="code">CuriosidadesAnimadas</span>, y ábrela en Claude Code. Si todavía no lo tienes, descárgalo desde la página oficial.</p>
+            <a class="step-action" href="https://claude.ai/download" target="_blank" rel="noopener">Descargar Claude ↗</a>
+          </div>
+        </article>
+
+        <article class="step" id="paso-2">
+          <div class="stepno">2</div>
+          <div class="step-body">
+            <h3>Instala la Skill gratuita de Nico Varel</h3>
+            <p>En Claude Code, pega este mensaje. Le indica a Claude que descargue el repositorio correcto de la Skill, revise sus instrucciones y la instale en tu carpeta de Skills.</p>
+            <div class="copy-card">
+              <div class="copy-card-head">
+                <span class="copy-card-title">PROMPT PARA CLAUDE CODE</span>
+                <button class="copy-button" type="button" onclick="copyInstallPrompt()" aria-label="Copiar prompt de instalación">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></svg>
+                  Copiar prompt
+                </button>
+              </div>
+              <pre class="copy-prompt" id="install-prompt">Instala en Claude Code la Skill de Shorts Animados de Nico Varel.
+
+Este es el repositorio correcto de la SKILL (no es el repositorio de la página web):
+https://github.com/NicoVarel/Skill-shorts-2d.git
+
+1. Clona el repositorio en una carpeta temporal llamada Skill-shorts-2d. Si ya existe, inspecciona su contenido y no sobrescribas archivos.
+2. Lee el README.md y el SKILL.md que están dentro de la carpeta shorts-curiosidades-animadas. Revisa también las instrucciones y dependencias documentadas.
+3. Instala la carpeta completa shorts-curiosidades-animadas en la ruta global de Skills de Claude Code: ~/.claude/skills/shorts-curiosidades-animadas/ (en Windows usa la ruta equivalente dentro de mi perfil de usuario: %USERPROFILE%\.claude\skills\shorts-curiosidades-animadas\).
+4. Conserva toda la estructura de scripts, references, assets y templates. No instales ni descargues el repositorio HTML de la página de Nico Varel: instala únicamente la Skill de este repositorio.
+5. Si ya existe una Skill con ese nombre, haz una copia de seguridad antes de actualizarla. No borres ni sobrescribas otros archivos.
+6. Comprueba los requisitos con el diagnóstico documentado (python scripts/doctor.py --gpu-test). No instales dependencias ni ejecutes cambios del sistema sin explicarme primero qué falta y pedirme permiso.
+7. Al terminar, dime dónde quedó instalada, qué requisitos están cumplidos y cómo iniciar la Skill con /shorts-curiosidades-animadas.
+
+No ejecutes instaladores remotos opacos, no uses curl | bash y no desactives protecciones del sistema.</pre>
+              <p class="copy-status" id="copy-status" role="status" aria-live="polite"></p>
+            </div>
+            <a class="repo-link" href="https://github.com/NicoVarel/Skill-shorts-2d" target="_blank" rel="noopener">Ver repositorio de la Skill en GitHub ↗</a>
+            <div class="step-note"><strong>Importante:</strong><span>Este repositorio contiene la Skill de Claude Code. No descargues el repositorio de esta página web: son proyectos distintos.</span></div>
+          </div>
+        </article>
+
+        <article class="step" id="paso-3"><div class="stepno">3</div><div class="step-body"><h3>Elige una curiosidad</h3><p>Escribe <span class="code">/shorts-curiosidades-animadas</span>. Claude te propondrá cinco ideas verificables. Elige una o escribe tu propia idea; también puedes darle un guion o un audio que ya tengas.</p></div></article>
+        <article class="step" id="paso-4"><div class="stepno">4</div><div class="step-body"><h3>Añade la narración</h3><p>Lo ideal es usar tu propia voz. Guarda el audio en la carpeta indicada por la Skill y Claude lo sincronizará con las escenas. Si no aportas una voz, el sistema puede usar una voz de reserva en línea; el texto del guion se envía a Microsoft y la voz suena más sintética.</p></div></article>
+        <article class="step" id="paso-5"><div class="stepno">5</div><div class="step-body"><h3>Revisa y exporta tu Short</h3><p>Claude prepara personajes 2D, escenarios 3D, movimientos de cámara, subtítulos y audio. Revisa la hoja de escenas y el informe de calidad. El video final queda en <span class="code">SHORTS/…/09-final/short.mp4</span>, junto con el título y la descripción.</p><small>La Skill prepara el archivo; la publicación en YouTube la haces tú.</small></div></article>
       </div>
-      <div class="notice"><strong>Importante:</strong> el tiempo de producción depende del ordenador, las herramientas y la generación de recursos. Los 10 minutos son el objetivo del tutorial, no una garantía. Ningún sistema puede garantizar 16 millones de visitas.</div>
+      <div class="notice"><strong>Antes de empezar:</strong> necesitas Claude Code, Chrome o Edge, Python 3.10 o superior y FFmpeg/ffprobe. La Skill incluye un diagnóstico para comprobar dependencias. El tiempo de render depende del equipo y los recursos; los 10 minutos son el objetivo del tutorial, no una garantía. Ninguna herramienta puede garantizar 16 millones de visitas.</div>
     </section>
 
     <section class="wrap" id="incluye">
@@ -279,13 +363,30 @@
 
     <section class="wrap" id="academia">
       <div class="academy">
-        <div>
-          <div class="eyebrow">EL SIGUIENTE NIVEL</div>
-          <h2>Ya sabes cómo crear un Short. Ahora aprende a crear contenido con IA de verdad.</h2>
-          <p>En AI Content Academy tienes cursos, sistemas, recursos, llamadas semanales, auditorías y una comunidad para seguir mejorando y convertir tus habilidades en oportunidades.</p>
-          <div class="price">10 plazas fundadoras: USD 14,99/mes · Después: USD 19,99/mes.</div>
+        <div class="academy-top">
+          <div class="eyebrow">EL SIGUIENTE PASO · AI CONTENT ACADEMY</div>
+          <h2>No te quedes en un solo Short. Aprende a crear canales de YouTube con IA.</h2>
+          <p class="academy-intro">Una cosa es crear un video y otra saber repetir el proceso, construir un canal y convertir lo que aprendes en una oportunidad. En AI Content Academy tienes formación práctica, sistemas y acompañamiento para avanzar con un plan.</p>
         </div>
-        <a class="btn primary" href="#incluye" aria-label="Ver qué incluye la academia">Ver qué incluye →</a>
+
+        <div class="academy-grid">
+          <article class="academy-feature"><div class="feature-mark">01</div><h3>Cursos paso a paso</h3><p>Aprende a encontrar ideas y nichos, escribir guiones, producir Shorts y videos largos y desarrollar canales faceless.</p></article>
+          <article class="academy-feature"><div class="feature-mark">02</div><h3>Sistemas y recursos</h3><p>Prompts, plantillas, flujos de trabajo y recursos reutilizables para dejar de empezar desde cero en cada video.</p></article>
+          <article class="academy-feature"><div class="feature-mark">03</div><h3>Auditorías semanales</h3><p>En las llamadas revisamos canales y proyectos de los miembros, detectamos oportunidades y explicamos qué mejorar.</p></article>
+          <article class="academy-feature"><div class="feature-mark">04</div><h3>Aprende a monetizar</h3><p>Desarrolla tus propios canales, aprende a ofrecer servicios de contenido o aplica estas habilidades a tu negocio.</p></article>
+          <article class="academy-feature"><div class="feature-mark">05</div><h3>Herramientas y novedades</h3><p>Pruebas y comparativas para descubrir qué herramientas de IA merece la pena utilizar y cómo sacarles partido.</p></article>
+          <article class="academy-feature"><div class="feature-mark">06</div><h3>Comunidad y desafíos</h3><p>Comparte tus proyectos, participa en desafíos mensuales y compite por una sesión estratégica privada de 2 horas con el fundador.</p></article>
+        </div>
+
+        <div class="academy-call">
+          <div><strong>También tendrás una llamada grupal cada semana · 90 minutos</strong><span>50 minutos para auditorías de canales y proyectos + 40 minutos de formación y preguntas.</span></div>
+        </div>
+
+        <div class="academy-cta-row">
+          <p class="price">Formación práctica · Recursos · Auditorías · Comunidad</p>
+          <a class="btn primary" href="https://www.skool.com/ai-content-academy-5760" target="_blank" rel="noopener">Conocer AI Content Academy ↗</a>
+        </div>
+        <p class="academy-disclaimer">Aprende a crear y mejorar contenido con IA. No prometemos visualizaciones ni ingresos garantizados: te damos formación, sistemas y acompañamiento para desarrollar tus habilidades.</p>
       </div>
     </section>
 
@@ -293,15 +394,43 @@
       <div class="section-title"><h2>Preguntas rápidas</h2></div>
       <div class="faq">
         <details><summary>¿Necesito saber animar o programar?</summary><p>No necesitas saber animar. La Skill está pensada para coordinar el proceso. Puede que tengas que seguir instrucciones de instalación y revisar el resultado.</p></details>
-        <details><summary>¿Necesito Claude Pro?</summary><p>Los requisitos de cuenta y uso dependen de la versión de Claude Code y de las herramientas que utilice la Skill. Publicaremos los requisitos exactos después de probarla.</p></details>
-        <details><summary>¿Puedo usar mi propia voz?</summary><p>Sí. El flujo está pensado para aceptar una narración grabada. También podrá utilizarse un servicio de voz compatible si lo configuras.</p></details>
-        <details><summary>¿Funciona en Mac y Windows?</summary><p>La compatibilidad se indicará según las pruebas reales de la versión publicada. No queremos prometer compatibilidad antes de verificarla.</p></details>
+        <details><summary>¿Qué necesito instalar?</summary><p>Claude Code, Chrome o Edge, Python 3.10 o superior y FFmpeg/ffprobe. La Skill incluye un diagnóstico para comprobar las dependencias; si falta algo, Claude te indicará qué necesitas antes de instalarlo.</p></details>
+        <details><summary>¿Puedo usar mi propia voz?</summary><p>Sí. Es la opción recomendada. Si no aportas audio, la Skill puede usar una voz de reserva en línea mediante edge-tts; en ese caso, el texto del guion se envía a Microsoft.</p></details>
+        <details><summary>¿Funciona en Windows, Mac y Linux?</summary><p>La Skill está diseñada para Claude Code. Los requisitos y dependencias pueden variar según el sistema; ejecuta el diagnóstico incluido para comprobar tu equipo antes de producir.</p></details>
         <details><summary>¿De verdad es gratis?</summary><p>El recurso y la plantilla gratuita no tienen coste de descarga. Claude y algunos servicios externos pueden requerir una suscripción, créditos o límites de uso.</p></details>
         <details><summary>¿Voy a conseguir 16 millones de visitas?</summary><p>No se pueden garantizar visualizaciones. La cifra hace referencia al formato que estudiamos; los resultados dependen de la idea, la historia, la ejecución y la audiencia.</p></details>
       </div>
     </section>
   </main>
 
-  <footer><div class="wrap footer-inner"><span><strong>NICO VAREL</strong> · Recurso gratuito para crear Shorts animados con IA.</span><span>Contenido educativo. Resultados de visualización no garantizados.</span></div></footer>
+  <footer><div class="wrap footer-inner"><span><strong>NICO VAREL</strong> · Recurso gratuito para crear Shorts animados con IA.</span><span><a href="https://www.skool.com/ai-content-academy-5760" target="_blank" rel="noopener">AI Content Academy en Skool</a> · Contenido educativo. Resultados no garantizados.</span></div></footer>
+  <script>
+    async function copyInstallPrompt() {
+      const prompt = document.getElementById('install-prompt').innerText;
+      const status = document.getElementById('copy-status');
+      const button = document.querySelector('.copy-button');
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(prompt);
+        } else {
+          const field = document.createElement('textarea');
+          field.value = prompt;
+          field.setAttribute('readonly', '');
+          field.style.position = 'absolute';
+          field.style.left = '-9999px';
+          document.body.appendChild(field);
+          field.select();
+          const copied = document.execCommand('copy');
+          field.remove();
+          if (!copied) throw new Error('No se pudo copiar');
+        }
+        status.textContent = '✓ Prompt copiado. Pégalo en Claude Code.';
+        button.innerHTML = '✓ Copiado';
+        window.setTimeout(() => { button.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></svg> Copiar prompt'; }, 2200);
+      } catch (error) {
+        status.textContent = 'No se pudo copiar automáticamente. Selecciona el texto y cópialo manualmente.';
+      }
+    }
+  </script>
 </body>
 </html>
