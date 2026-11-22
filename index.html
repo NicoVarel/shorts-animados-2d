@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Recurso gratuito de Nico Varel: aprende a crear Shorts animados con personajes 2D, escenarios 3D y Claude.">
+  <meta name="theme-color" content="#080D18">
+  <title>Shorts animados con Claude | Nico Varel</title>
+  <style>
+    :root{
+      --ink:#101828;--muted:#667085;--blue:#155eef;--blue-dark:#1249b8;
+      --pale:#eef4ff;--line:#e5eaf2;--bg:#fff;--soft:#f7f9fc;--green:#067647;
+      --radius:18px;--max:1000px
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+    a{color:var(--blue)}
+    .wrap{width:min(var(--max),calc(100% - 40px));margin-inline:auto}
+    .topbar{border-bottom:1px solid var(--line);background:#fff}
+    .nav{height:70px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .logo{font-weight:900;letter-spacing:.075em;text-decoration:none;color:var(--ink);font-size:17px}
+    .logo span{color:var(--blue)}
+    .navlink{font-size:14px;text-decoration:none;font-weight:750}
+    .hero{padding:66px 0 54px;display:grid;grid-template-columns:1.08fr .92fr;gap:44px;align-items:center}
+    .eyebrow{display:inline-flex;gap:7px;align-items:center;color:var(--blue-dark);background:var(--pale);border:1px solid #d8e5ff;padding:6px 11px;border-radius:999px;font-size:12px;font-weight:850;letter-spacing:.035em}
+    h1{font-size:clamp(38px,5.1vw,58px);line-height:1.05;letter-spacing:-.05em;margin:17px 0 17px;max-width:650px}
+    h1 span{color:var(--blue)}
+    .lead{font-size:18px;line-height:1.55;color:#475467;max-width:590px;margin:0 0 24px}
+    .actions{display:flex;gap:11px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:11px 17px;border-radius:11px;text-decoration:none;font-size:14px;font-weight:850;transition:.18s ease;border:1px solid transparent}
+    .btn.primary{background:var(--blue);color:#fff;box-shadow:0 7px 18px #155eef26}
+    .btn.primary:hover{background:var(--blue-dark);transform:translateY(-1px)}
+    .btn.secondary{color:var(--ink);border-color:#d0d5dd;background:#fff}
+    .btn.secondary:hover{background:var(--soft)}
+    .hint{font-size:12px;color:var(--muted);margin-top:13px}
+    .visual{position:relative;max-width:420px;margin-left:auto;width:100%;padding:12px;border:1px solid var(--line);border-radius:25px;background:var(--soft);box-shadow:0 22px 55px #10182812}
+    .phones{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:center}
+    .phone{border:5px solid #182334;border-radius:25px;background:#182334;padding:5px;overflow:hidden;position:relative;aspect-ratio:9/16;box-shadow:0 7px 16px #10182820}
+    .phone:first-child{transform:translateY(12px)}
+    .phone:last-child{transform:translateY(-12px)}
+    .screen{height:100%;width:100%;border-radius:16px;overflow:hidden;position:relative;display:flex;align-items:end;justify-content:center;padding:15px 9px;text-align:center;color:#fff;background:linear-gradient(180deg,#9ab9df 0%,#d6e7f4 42%,#795d48 43%,#3d2c25 100%)}
+    .screen.second{background:linear-gradient(180deg,#91b5dc 0%,#d7e9fb 35%,#8b6847 36%,#d4a36a 100%)}
+    .screen:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,#111827a8 100%)}
+    .scene-window{position:absolute;top:13%;left:12%;right:12%;height:38%;border:5px solid #553c2c;background:linear-gradient(180deg,#b4d5f0,#e8e8dc);box-shadow:inset 0 0 0 3px #e7d4b1}
+    .scene-window:after{content:"";position:absolute;left:48%;top:0;bottom:0;border-left:3px solid #76543c}
+    .counter{position:absolute;bottom:24%;left:10%;right:10%;height:20%;background:repeating-linear-gradient(90deg,#8d5835 0 18px,#714328 18px 21px);border-top:5px solid #d6a16a;transform:perspective(130px) rotateX(8deg)}
+    .snow{background:linear-gradient(180deg,#8cc4f3 0%,#dcedfa 48%,#e8f2fb 49%,#c7d9e9 100%)}
+    .snow:after{content:"";position:absolute;bottom:24%;left:-10%;width:120%;height:28%;background:#fff;clip-path:polygon(0 40%,20% 15%,40% 35%,60% 0,80% 35%,100% 10%,100% 100%,0 100%)}
+    .char{position:absolute;z-index:2;bottom:23%;left:50%;transform:translateX(-50%);width:65px;height:90px}
+    .char .head{position:absolute;top:0;left:14px;width:38px;height:38px;border-radius:45% 45% 42% 42%;background:#ffe1c4;border:2px solid #543a31}
+    .char .hair{position:absolute;top:-4px;left:13px;width:40px;height:15px;border-radius:50% 50% 20% 20%;background:#3c2c25;z-index:1}
+    .char .body{position:absolute;top:35px;left:10px;width:47px;height:43px;border-radius:12px 12px 8px 8px;background:#245c9e;border:2px solid #183b65}
+    .char .leg{position:absolute;top:73px;width:8px;height:17px;background:#2d2930;border-radius:4px}
+    .char .leg.l{left:18px}.char .leg.r{right:18px}
+    .caption{position:relative;z-index:3;font-size:clamp(12px,1.6vw,16px);line-height:1.15;font-weight:950;text-shadow:0 2px 5px #000;max-width:95%}
+    .phone-tag{position:absolute;z-index:4;top:7px;left:50%;transform:translateX(-50%);width:48px;height:12px;border-radius:99px;background:#111827}
+    .visual-label{display:flex;justify-content:space-between;gap:8px;color:var(--muted);font-size:11px;font-weight:750;padding:13px 5px 1px}
+    section{padding:43px 0}
+    .section-title{margin-bottom:23px;max-width:700px}
+    h2{font-size:clamp(27px,3.5vw,36px);line-height:1.12;letter-spacing:-.035em;margin:0 0 9px}
+    .section-title p{margin:0;color:var(--muted)}
+    .ideas{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+    .idea{border:1px solid var(--line);border-radius:15px;overflow:hidden;background:#fff}
+    .idea-art{height:116px;display:flex;align-items:center;justify-content:center;font-size:42px;background:linear-gradient(145deg,#eaf2ff,#d7e7ff)}
+    .idea:nth-child(2) .idea-art{background:linear-gradient(145deg,#fff2dc,#f0d0a3)}
+    .idea:nth-child(3) .idea-art{background:linear-gradient(145deg,#e7eaf2,#c3cbd9)}
+    .idea:nth-child(4) .idea-art{background:linear-gradient(145deg,#edf6ff,#d2e3f6)}
+    .idea:nth-child(5) .idea-art{background:linear-gradient(145deg,#e8f5e8,#c8e2ca)}
+    .idea-body{padding:12px}
+    .idea h3{font-size:14px;line-height:1.25;margin:0 0 5px}
+    .idea p{font-size:12px;color:var(--muted);margin:0 0 9px}
+    .tag{font-size:10px;color:var(--blue-dark);font-weight:850;letter-spacing:.04em}
+    .source{font-size:11px;text-decoration:none;font-weight:700}
+    .requirements{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    .req{padding:17px 15px;border:1px solid var(--line);border-radius:15px;background:#fff}
+    .req .ico{font-size:25px;margin-bottom:7px}
+    .req h3{font-size:15px;margin:0 0 4px}
+    .req p{font-size:13px;color:var(--muted);margin:0}
+    .label{display:inline-block;font-size:10px;font-weight:850;letter-spacing:.05em;color:var(--blue-dark);background:var(--pale);padding:4px 7px;border-radius:6px;margin-top:9px}
+    .steps{display:grid;gap:0;border-top:1px solid var(--line)}
+    .step{display:grid;grid-template-columns:52px 1fr;gap:14px;padding:21px 0;border-bottom:1px solid var(--line)}
+    .stepno{width:38px;height:38px;border-radius:12px;background:var(--pale);color:var(--blue);display:grid;place-items:center;font-weight:900;font-size:16px}
+    .step h3{font-size:18px;margin:0 0 5px}
+    .step p{color:#475467;margin:0;font-size:14px;max-width:740px}
+    .step small{display:block;color:var(--muted);margin-top:7px;font-size:12px}
+    .code{display:inline-block;background:#f2f4f7;border:1px solid #e4e7ec;border-radius:7px;padding:2px 7px;font:12px ui-monospace,monospace;color:#344054}
+    .notice{margin-top:17px;border-left:3px solid var(--blue);background:var(--pale);padding:13px 15px;border-radius:0 10px 10px 0;color:#344e79;font-size:13px}
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .offer{padding:23px;border-radius:17px;border:1px solid var(--line);background:#fff}
+    .offer.paid{border-color:#bfd3ff;background:#f7faff}
+    .offer h3{font-size:18px;margin:0 0 13px}
+    .offer ul{padding-left:20px;margin:0;color:#475467;font-size:14px}
+    .offer li{margin:8px 0}
+    .academy{background:#0d1b35;color:#fff;border-radius:20px;padding:28px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:22px}
+    .academy .eyebrow{background:#183866;color:#cfe0ff;border-color:#294e83}
+    .academy h2{margin:12px 0 8px}
+    .academy p{margin:0;color:#c4d0e1;max-width:590px}
+    .academy .btn{white-space:nowrap}
+    .price{margin-top:13px;font-weight:800;color:#e5edff;font-size:13px}
+    .faq{border-top:1px solid var(--line)}
+    details{border-bottom:1px solid var(--line);padding:15px 0}
+    summary{cursor:pointer;font-weight:800;font-size:15px;list-style:none;display:flex;justify-content:space-between;gap:12px}
+    summary::-webkit-details-marker{display:none}
+    summary:after{content:"+";color:var(--blue);font-size:20px;line-height:1}
+    details[open] summary:after{content:"−"}
+    details p{margin:10px 0 0;color:var(--muted);font-size:14px;max-width:760px}
+    footer{border-top:1px solid var(--line);padding:23px 0 35px;color:var(--muted);font-size:12px}
+    .footer-inner{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+    @media(max-width:850px){.hero{grid-template-columns:1fr;gap:28px;padding-top:48px}.visual{margin:0 auto}.ideas{grid-template-columns:repeat(3,1fr)}.requirements{grid-template-columns:repeat(2,1fr)}.academy{grid-template-columns:1fr}.academy .btn{justify-self:start}}
+    @media(max-width:560px){.wrap{width:calc(100% - 30px)}.nav{height:62px}.navlink{font-size:12px}.hero{padding:43px 0 34px}h1{font-size:41px}.lead{font-size:16px}.ideas{grid-template-columns:1fr 1fr}.idea-art{height:94px}.requirements{grid-template-columns:1fr 1fr}.step{grid-template-columns:42px 1fr;gap:10px}.split{grid-template-columns:1fr}.academy{padding:22px}.btn{width:100%}.actions{display:grid}}
+
+    /* Nico Varel dark visual system */
+    :root{
+      color-scheme:dark;
+      --ink:#F1F5FC;--muted:#A4B1C5;--blue:#3984F6;--blue-dark:#67A2FF;
+      --pale:#13294B;--line:#26364D;--bg:#080D18;--soft:#0F1929;--green:#35C58A;
+    }
+    body{background:var(--bg);color:var(--ink)}
+    a{color:#78ADFF}
+    .topbar{background:#0B1220;border-bottom-color:#243248}
+    .logo{color:#F5F8FF}
+    .navlink{color:#9FC2FF}
+    .eyebrow{color:#A9CBFF;background:#13294B;border-color:#294B78}
+    .lead{color:#C0CBDC}
+    .hint{color:#94A3B8}
+    .btn.primary{background:#236FE2;box-shadow:0 8px 24px #1255c733}
+    .btn.primary:hover{background:#3984F6}
+    .btn.secondary{color:#E5ECF7;border-color:#34465F;background:#111C2D}
+    .btn.secondary:hover{background:#17253A}
+    .visual{padding:10px;border-color:#2A3A52;background:#0D1727;box-shadow:0 22px 55px #0008}
+    .reference-collage{display:block;width:100%;height:auto;border-radius:16px;border:1px solid #35445B}
+    .visual-label{color:#A4B1C5}
+    section{scroll-margin-top:80px}
+    .section-title p{color:#A4B1C5}
+    .idea{background:#101A2A;border-color:#2A3A51;box-shadow:0 9px 24px #0002}
+    .idea-image{display:block;width:100%;aspect-ratio:9/16;object-fit:cover;object-position:center;background:#0B1220;border-bottom:1px solid #2A3A51}
+    .idea-body{padding:15px}
+    .idea h3{font-size:15px;color:#F3F6FC;margin-bottom:6px}
+    .idea p{color:#AEBBD0}
+    .idea p.idea-meta{font-size:11px;font-weight:800;letter-spacing:.025em;color:#82B2FF;margin:0 0 9px}
+    .idea .idea-body>p:not(.idea-meta){font-size:12px;line-height:1.5;min-height:72px;margin:0 0 12px;color:#BAC6D8}
+    .tag{display:inline-block;color:#A8CBFF;background:#142B4E;border:1px solid #274B78;padding:5px 8px;border-radius:6px;font-size:9px}
+    .source{color:#8DBAFF}
+    .req{background:#101A2A;border-color:#2A3A51}
+    .req h3{color:#F2F5FB}
+    .req p{color:#AAB7CB}
+    .req .ico{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;background:#172944;color:#9FC2FF;font-size:20px}
+    .label{color:#A9CBFF;background:#172F53;border:1px solid #294D7D}
+    .steps{border-top-color:#293950}
+    .step{border-bottom-color:#293950}
+    .stepno{background:#17345F;color:#8FBBFF}
+    .step p{color:#C0CBDC}
+    .step small{color:#9BAAC0}
+    .code{background:#111C2D;border-color:#34465F;color:#DCE7F7}
+    .notice{background:#102544;border-left-color:#3984F6;color:#C7DBF8}
+    .offer{background:#101A2A;border-color:#2A3A51}
+    .offer.paid{background:#12233B;border-color:#315783}
+    .offer ul{color:#C0CBDC}
+    .academy{background:linear-gradient(135deg,#10213D,#0C1729);border:1px solid #29466F}
+    .academy .eyebrow{background:#17345D;color:#B9D4FF;border-color:#315783}
+    .academy p{color:#C3D0E2}
+    .price{color:#D6E5FF}
+    .faq{border-top-color:#293950}
+    details{border-bottom-color:#293950}
+    details p{color:#B3C0D2}
+    summary{color:#F0F4FB}
+    summary:after{color:#78ADFF}
+    footer{border-top-color:#293950;color:#91A0B7}
+    .footer-inner strong{color:#EAF1FB}
+    ::selection{background:#225EB5;color:#fff}
+    @media(max-width:850px){.ideas{grid-template-columns:repeat(3,1fr)}}
+    @media(max-width:560px){.ideas{grid-template-columns:1fr 1fr}.idea-image{aspect-ratio:9/16}.idea .idea-body>p:not(.idea-meta){min-height:0}}
+    @media(max-width:390px){.ideas{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap nav">
+      <a class="logo" href="#top">NICO <span>VAREL</span></a>
+      <a class="navlink" href="#academia">Monetiza con IA →</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <div class="wrap hero">
+      <div>
+        <div class="eyebrow">🎁 RECURSO GRATIS DEL VÍDEO</div>
+        <h1>Crea Shorts animados con <span>Claude</span>, sin saber animar</h1>
+        <p class="lead">Elige una curiosidad, prepara la voz y crea un Short con personajes 2D, escenarios 3D, cámara en movimiento y subtítulos.</p>
+        <div class="actions">
+          <a class="btn primary" href="#paso-1">Empezar gratis ↓</a>
+          <a class="btn secondary" href="#pasos">Ver cómo se hace</a>
+        </div>
+        <p class="hint">Una guía práctica para crear tu primer Short. La descarga de la Skill se habilitará cuando la versión esté probada.</p>
+      </div>
+      <div>
+        <div class="visual" aria-label="Ejemplos reales de Shorts animados de referencia">
+          <img class="reference-collage" src="assets/referencias-shorts.webp" alt="Cinco ejemplos de Shorts verticales con personajes 2D integrados en escenarios 3D: despertador humano, bolera, ley de la bandera roja, banquete histórico y transporte de hielo a la India.">
+          <div class="visual-label"><span>PERSONAJES 2D + ESCENARIOS 3D</span><span>5 EJEMPLOS · 9:16</span></div>
+        </div>
+      </div>
+    </div>
+
+    <section class="wrap" id="ideas">
+      <div class="section-title">
+        <h2>Esto es lo que vas a hacer</h2>
+        <p>5 curiosidades preparadas para convertirlas en Shorts animados. Cada historia tiene su propio guion y escenas.</p>
+      </div>
+      <div class="ideas">
+        <article class="idea">
+          <img class="idea-image" src="assets/short-despertador.webp" alt="Short de referencia: personaje acostado en una cama, recreación del despertador humano.">
+          <div class="idea-body"><h3>El despertador humano</h3><p class="idea-meta">Inglaterra · Alrededor de 1900</p><p>Antes de los despertadores modernos, algunas personas recorrían las calles para despertar a los trabajadores golpeando sus ventanas.</p><span class="tag">CURIOSIDAD HISTÓRICA</span></div>
+        </article>
+        <article class="idea">
+          <img class="idea-image" src="assets/short-bolera.webp" alt="Short de referencia: bolera antigua con un personaje junto a la pista.">
+          <div class="idea-body"><h3>Los colocadores de bolos</h3><p class="idea-meta">Boleras de antes</p><p>Antes de que las máquinas hicieran el trabajo, había personas encargadas de recoger y colocar los bolos después de cada tirada.</p><span class="tag">OFICIOS QUE DESAPARECIERON</span></div>
+        </article>
+        <article class="idea">
+          <img class="idea-image" src="assets/short-bandera.webp" alt="Short de referencia: documento antiguo con el texto Ley 1865 sobre un escritorio histórico.">
+          <div class="idea-body"><h3>El hombre de la bandera roja</h3><p class="idea-meta">Reino Unido · Ley de 1865</p><p>Una antigua norma obligaba a que una persona caminara delante de determinados vehículos autopropulsados llevando una bandera roja.</p><span class="tag">LEYES EXTRAÑAS</span></div>
+        </article>
+        <article class="idea">
+          <img class="idea-image" src="assets/short-salon.webp" alt="Short de referencia: banquete en un salón histórico con personajes 2D y escenario 3D.">
+          <div class="idea-body"><h3>La piña de alquiler</h3><p class="idea-meta">Inglaterra · Siglo XVIII</p><p>Una fruta tan exclusiva que algunas personas podían alquilarla para exhibirla en reuniones y cenas, como símbolo de riqueza y prestigio.</p><span class="tag">COSTUMBRES CURIOSAS</span></div>
+        </article>
+        <article class="idea">
+          <img class="idea-image" src="assets/short-hielo.webp" alt="Short de referencia: escena nevada con personajes históricos y un trineo.">
+          <div class="idea-body"><h3>El hielo que viajó a la India</h3><p class="idea-meta">Boston · 1833</p><p>La historia de cómo se transportó hielo natural desde Estados Unidos hasta la India, atravesando miles de kilómetros por mar.</p><span class="tag">HISTORIAS INCREÍBLES</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap" id="requisitos">
+      <div class="section-title">
+        <h2>Antes de empezar</h2>
+        <p>Lo que necesitas para seguir el tutorial.</p>
+      </div>
+      <div class="requirements">
+        <article class="req"><div class="ico">💻</div><h3>Un ordenador</h3><p>Mac o Windows, conexión a internet y espacio libre para el proyecto y los archivos.</p></article>
+        <article class="req"><div class="ico">🤖</div><h3>Claude Code</h3><p>La herramienta que coordinará la Skill y el proceso de creación.</p><a class="label" href="https://claude.ai/download" target="_blank" rel="noopener">DESCARGAR CLAUDE ↗</a></article>
+        <article class="req"><div class="ico">🎁</div><h3>La Skill gratuita</h3><p>El paquete de Nico Varel con instrucciones, recursos y flujo de producción.</p><span class="label">DESCARGA EN PREPARACIÓN</span></article>
+        <article class="req"><div class="ico">🎙️</div><h3>Una voz</h3><p>Tu propia narración o un servicio compatible de generación de voz. Pueden aplicarse límites o costes.</p></article>
+      </div>
+    </section>
+
+    <section class="wrap" id="pasos">
+      <div class="section-title">
+        <h2>Tu primer Short en 5 pasos</h2>
+        <p>Sigue el proceso de principio a fin. Las instrucciones definitivas de instalación se añadirán cuando la Skill esté probada.</p>
+      </div>
+      <div class="steps">
+        <article class="step" id="paso-1"><div class="stepno">1</div><div><h3>Abre Claude Code</h3><p>Crea una carpeta nueva para tu proyecto, por ejemplo <span class="code">CuriosidadesAnimadas</span>, y ábrela en Claude Code.</p><small>Descarga Claude desde su página oficial si todavía no lo tienes.</small></div></article>
+        <article class="step" id="paso-2"><div class="stepno">2</div><div><h3>Instala la Skill de Nico Varel</h3><p>Descarga el paquete gratuito y sigue las instrucciones incluidas para instalarlo en Claude Code.</p><small>El botón de descarga y la ruta exacta se publicarán aquí después de validar el instalador y probarlo en los sistemas compatibles.</small></div></article>
+        <article class="step" id="paso-3"><div class="stepno">3</div><div><h3>Elige una curiosidad</h3><p>Selecciona una de las cinco ideas preparadas o introduce una historia propia. Claude investiga los datos, prepara el guion y organiza las escenas.</p></div></article>
+        <article class="step" id="paso-4"><div class="stepno">4</div><div><h3>Añade la voz</h3><p>Graba la narración o utiliza un proveedor de voz compatible. Coloca el audio en la carpeta del proyecto siguiendo las instrucciones de la Skill.</p></div></article>
+        <article class="step" id="paso-5"><div class="stepno">5</div><div><h3>Genera y revisa tu Short</h3><p>Claude coordina personajes, escenarios, animación, cámara y subtítulos. Revisa el resultado y exporta el video vertical cuando el render esté terminado.</p></div></article>
+      </div>
+      <div class="notice"><strong>Importante:</strong> el tiempo de producción depende del ordenador, las herramientas y la generación de recursos. Los 10 minutos son el objetivo del tutorial, no una garantía. Ningún sistema puede garantizar 16 millones de visitas.</div>
+    </section>
+
+    <section class="wrap" id="incluye">
+      <div class="section-title">
+        <h2>¿Qué incluye el recurso gratis?</h2>
+        <p>Una primera versión para que puedas probar el flujo y crear tu primer Short.</p>
+      </div>
+      <div class="split">
+        <article class="offer"><h3>🎁 Plantilla gratis</h3><ul><li>5 ideas de curiosidades para empezar.</li><li>Guion y estructura de escenas.</li><li>Personajes 2D y escenarios 3D.</li><li>Movimiento de cámara y subtítulos.</li><li>Flujo para añadir tu propia voz.</li><li>Exportación vertical lista para revisar.</li></ul></article>
+        <article class="offer paid"><h3>🔓 Dentro de AI Content Academy</h3><ul><li>Formación completa para crear Shorts y videos con IA.</li><li>Sistemas de producción y recursos reutilizables.</li><li>Herramientas, pruebas y nuevos flujos de trabajo.</li><li>Auditorías de canales y proyectos en llamadas semanales.</li><li>Formación para crecer y monetizar tus habilidades.</li><li>Comunidad y desafíos mensuales con premios.</li></ul></article>
+      </div>
+    </section>
+
+    <section class="wrap">
+      <div class="section-title">
+        <h2>¿Por qué te regalo esto?</h2>
+        <p>Porque probar una herramienta está bien. Aprender a crear contenido de forma constante, mejorar tus videos y saber qué hacer con esa habilidad es el siguiente paso. La plantilla es tuya: úsala y crea tu primer Short.</p>
+      </div>
+    </section>
+
+    <section class="wrap" id="academia">
+      <div class="academy">
+        <div>
+          <div class="eyebrow">EL SIGUIENTE NIVEL</div>
+          <h2>Ya sabes cómo crear un Short. Ahora aprende a crear contenido con IA de verdad.</h2>
+          <p>En AI Content Academy tienes cursos, sistemas, recursos, llamadas semanales, auditorías y una comunidad para seguir mejorando y convertir tus habilidades en oportunidades.</p>
+          <div class="price">10 plazas fundadoras: USD 14,99/mes · Después: USD 19,99/mes.</div>
+        </div>
+        <a class="btn primary" href="#incluye" aria-label="Ver qué incluye la academia">Ver qué incluye →</a>
+      </div>
+    </section>
+
+    <section class="wrap" id="preguntas">
+      <div class="section-title"><h2>Preguntas rápidas</h2></div>
+      <div class="faq">
+        <details><summary>¿Necesito saber animar o programar?</summary><p>No necesitas saber animar. La Skill está pensada para coordinar el proceso. Puede que tengas que seguir instrucciones de instalación y revisar el resultado.</p></details>
+        <details><summary>¿Necesito Claude Pro?</summary><p>Los requisitos de cuenta y uso dependen de la versión de Claude Code y de las herramientas que utilice la Skill. Publicaremos los requisitos exactos después de probarla.</p></details>
+        <details><summary>¿Puedo usar mi propia voz?</summary><p>Sí. El flujo está pensado para aceptar una narración grabada. También podrá utilizarse un servicio de voz compatible si lo configuras.</p></details>
+        <details><summary>¿Funciona en Mac y Windows?</summary><p>La compatibilidad se indicará según las pruebas reales de la versión publicada. No queremos prometer compatibilidad antes de verificarla.</p></details>
+        <details><summary>¿De verdad es gratis?</summary><p>El recurso y la plantilla gratuita no tienen coste de descarga. Claude y algunos servicios externos pueden requerir una suscripción, créditos o límites de uso.</p></details>
+        <details><summary>¿Voy a conseguir 16 millones de visitas?</summary><p>No se pueden garantizar visualizaciones. La cifra hace referencia al formato que estudiamos; los resultados dependen de la idea, la historia, la ejecución y la audiencia.</p></details>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="wrap footer-inner"><span><strong>NICO VAREL</strong> · Recurso gratuito para crear Shorts animados con IA.</span><span>Contenido educativo. Resultados de visualización no garantizados.</span></div></footer>
+</body>
+</html>
